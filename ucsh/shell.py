@@ -28,10 +28,13 @@ class Shell(Cmd):
 
     file = None
 
-    def __init__(self, completekey='tab', stdin=None, stdout=None, ucloud=None):
+    def __init__(self, completekey='tab', stdin=None, stdout=None, ucloud=None, options=None):
         Cmd.__init__(self, completekey, stdin, stdout)
         self.ucloud = ucloud
         self.dir = Dir(ucloud=ucloud)
+        self.options = options
+        if self.options.region:
+            self.dir.chdir(self.options.region)
         self.update_prompt()
 
     def update_prompt(self):

@@ -15,7 +15,7 @@ class UCloudAction:
     def __call__(self, **kwargs):
         params = dict(
             PublicKey=self.options.public_key, 
-            Action=self.action, ProjectId=self.options.project_id)
+            Action=self.action, ProjectId=self.options.project)
         params.update(kwargs)
         self.sign(params)
         return self.request(params)
