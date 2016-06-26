@@ -14,8 +14,8 @@ def main():
     options = Options()
     options.load()
 
-    sh = Shell()
-    sh.ucloud = UCloud(options)
+    ucloud = UCloud(options)
+    sh = Shell(ucloud=ucloud)
     if len(sys.argv) >= 2:
         sh.onecmd(' '.join(sys.argv[1:]))
     else:
